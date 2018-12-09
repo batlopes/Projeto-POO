@@ -1,14 +1,57 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Models;
 
-/**
- *
- * @author 2017007379
- */
+import java.sql.Timestamp;
+
 public class Cliente {
-    
+	
+	private String nome;
+	private Timestamp  criadoEm;
+	private int id;
+	private String contato;
+	
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public String getContato() {
+		return contato;
+	}
+
+
+	public void setContato(String contato) {
+		this.contato = contato;
+	}
+
+
+	public Cliente() {
+		// TODO Auto-generated constructor stub
+	}
+	
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public Timestamp getCriadoEm() {
+		return criadoEm;
+	}
+
+
+	public void setCriadoEm(Timestamp criadoEm) {
+		this.criadoEm = criadoEm;
+	}
+
+
 }
