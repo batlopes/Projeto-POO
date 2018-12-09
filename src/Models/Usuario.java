@@ -75,6 +75,7 @@ public class Usuario {
         }
         String senhahex = hexStringSenha.toString();
         
+        System.out.println(hash);   
         return senhahex.equals(hash);
 	}
 	
@@ -83,12 +84,15 @@ public class Usuario {
 		UsuarioDAO dao = new UsuarioDAO();
 	    Usuario usuario = dao.getForEmail(email);
 	    
-	    if (usuario != null){
+	    if (usuario!=null){
 	    	if (verifyPassword(senha, usuario.getSenha())){
 	    		return usuario;
 	    	}
+	    	else {
+	    		System.out.println("Senha incorreta");
+	    	}
 	    }
-	    
+	    System.out.println("Usuario não existe");
 		return null;
 	}
 	
@@ -97,7 +101,7 @@ public class Usuario {
 		return dao.getLista();
 	}
 	
-	public void create(){
+	public void create() throws NoSuchAlgorithmException, UnsupportedEncodingException{
 	    UsuarioDAO dao = new UsuarioDAO();
 	    dao.adiciona(this);
 	}
