@@ -1,5 +1,7 @@
 package Banco;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,20 +19,20 @@ public class UsuarioDAO {
         this.connection = new Coneccao().getConnection();
     }
     
-    public void adiciona(Usuario usuario) {
+    public void adiciona(Usuario usuario) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         String sql = "insert into usuario " +
                 "(nome,email,senha)" +
                 " values (?,?,?)";
 
         try {
-            // prepared statement para inserção
+            // prepared statement para inserï¿½ï¿½o
             PreparedStatement stmt = connection.prepareStatement(sql);
 
             // seta os valores
 
             stmt.setString(1,usuario.getNome());
             stmt.setString(2,usuario.getEmail());
-            stmt.setString(3,usuario.getSenha());
+            stmt.setString(3,Usuario.hashPassword(usuario.getSenha()));
        
             // executa
             stmt.execute();
@@ -56,7 +58,7 @@ public class UsuarioDAO {
         	usuario.setEmail(rs.getString("email"));
         	usuario.setSenha(rs.getString("senha"));
 
-            // adicionando o objeto à lista
+            // adicionando o objeto ï¿½ lista
             usuarios.add(usuario);
         }
 
@@ -74,9 +76,8 @@ public class UsuarioDAO {
         
         Usuario usuario = new Usuario();
         
-        while (rs.first()) {
-
-         
+        if (rs.first()) {
+        	usuario.setId(rs.getInt("id"));
         	usuario.setNome(rs.getString("nome"));
         	usuario.setEmail(rs.getString("email"));
         	usuario.setSenha(rs.getString("senha"));
