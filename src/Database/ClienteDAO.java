@@ -1,11 +1,15 @@
-package Banco;
+package Database;
 
+import Banco.Coneccao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import Models.Cliente;
 import Models.Servico;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteDAO {
 	
@@ -21,7 +25,7 @@ public class ClienteDAO {
                 " values (?)";
 
         try {
-            // prepared statement para inserção
+            // prepared statement para inserï¿½ï¿½o
             PreparedStatement stmt = connection.prepareStatement(sql);
 
             // seta os valores
@@ -34,6 +38,36 @@ public class ClienteDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    
+    public List<Cliente> getLista() throws SQLException{
+    	PreparedStatement stmt = this.connection
+                .prepareStatement("select * from cliente");
+        ResultSet rs = stmt.executeQuery();
+
+        List<Cliente> clientes = new ArrayList<Cliente>();
+
+        while (rs.next()) {
+
+            // criando o objeto usuario
+        	Cliente cliente = new Cliente();
+        	cliente.setId(rs.getInt("id"));
+        	cliente.setNome(rs.getString("nome"));
+        	cliente.setContato(rs.getString("contato"));
+                cliente.setCriadoEm(rs.getTimestamp("criado_em"));
+
+            // adicionando o objeto ï¿½ lista
+            clientes.add(cliente);
+        }
+
+        rs.close();
+        stmt.close();
+
+        return clientes;
+    }
+    
+    public void adicionaServico(Servico servico){
+        
     }
 
 }

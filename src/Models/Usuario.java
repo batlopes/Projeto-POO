@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
 
-import Banco.UsuarioDAO;
+import Database.UsuarioDAO;
 
 public class Usuario extends UsuarioDAO {
 	

@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
 
-import Banco.ServicoDAO;
+import Database.ServicoDAO;
 
 public class Servico extends ServicoDAO {
 	
