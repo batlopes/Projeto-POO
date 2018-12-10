@@ -92,7 +92,7 @@ public class Usuario extends UsuarioDAO {
 	    		System.out.println("Senha incorreta");
 	    	}
 	    }
-	    System.out.println("Usuario não existe");
+	    System.out.println("Usuario nï¿½o existe");
 		return null;
 	}
 	

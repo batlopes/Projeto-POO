@@ -25,7 +25,7 @@ public class UsuarioDAO {
                 " values (?,?,?)";
 
         try {
-            // prepared statement para inserção
+            // prepared statement para inserï¿½ï¿½o
             PreparedStatement stmt = connection.prepareStatement(sql);
 
             // seta os valores
@@ -58,7 +58,7 @@ public class UsuarioDAO {
         	usuario.setEmail(rs.getString("email"));
         	usuario.setSenha(rs.getString("senha"));
 
-            // adicionando o objeto à lista
+            // adicionando o objeto ï¿½ lista
             usuarios.add(usuario);
         }
 
