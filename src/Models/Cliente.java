@@ -2,7 +2,9 @@ package Models;
 
 import java.sql.Timestamp;
 
-public class Cliente {
+import Banco.ClienteDAO;
+
+public class Cliente extends ClienteDAO{
 	
 	private String nome;
 	private Timestamp  criadoEm;
