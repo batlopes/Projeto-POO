@@ -6,9 +6,9 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
 
-import Banco.UsuarioDAO;
+import Database.UsuarioDAO;
 
-public class Usuario {
+public class Usuario extends UsuarioDAO {
 	
 	private String nome;
 	private String email;
@@ -96,14 +96,6 @@ public class Usuario {
 		return null;
 	}
 	
-	public List<Usuario> getTodosUsuarios() throws SQLException{
-		UsuarioDAO dao = new UsuarioDAO();
-		return dao.getLista();
-	}
-	
-	public void create() throws NoSuchAlgorithmException, UnsupportedEncodingException{
-	    UsuarioDAO dao = new UsuarioDAO();
-	    dao.adiciona(this);
-	}
+
 
 }

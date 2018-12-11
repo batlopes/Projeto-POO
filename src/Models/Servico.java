@@ -1,6 +1,13 @@
 package Models;
 
-public class Servico {
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+import java.util.List;
+
+import Database.ServicoDAO;
+
+public class Servico extends ServicoDAO {
 	
 	private int id;
 	private String descricao;
@@ -41,5 +48,6 @@ public class Servico {
 	public void setPreco(float preco) {
 		this.preco = preco;
 	}
+
 
 }

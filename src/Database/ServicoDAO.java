@@ -1,4 +1,4 @@
-package Banco;
+package Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Models.Servico;
-import Models.Usuario;
 
 
 public class ServicoDAO {
@@ -25,7 +24,7 @@ public class ServicoDAO {
                 " values (?,?,?)";
 
         try {
-            // prepared statement para inserção
+            // prepared statement para inserï¿½ï¿½o
             PreparedStatement stmt = connection.prepareStatement(sql);
 
             // seta os valores
@@ -58,7 +57,7 @@ public class ServicoDAO {
         	servico.setTempo(rs.getFloat("tempo"));
         	servico.setPreco(rs.getFloat("preco"));
 
-            // adicionando o objeto à lista
+            // adicionando o objeto ï¿½ lista
            servicos.add(servico);
         }
 
@@ -66,6 +65,20 @@ public class ServicoDAO {
         stmt.close();
 
         return servicos;
+    }
+    
+    public Servico atualizar (){
+        return null;
+    }
+    
+    public void deletar(int id) throws SQLException{
+       PreparedStatement stmt = this.connection
+                .prepareStatement("delete from servico WHERE id= ?");
+       
+       stmt.setInt(1,id);
+       stmt.execute();
+       stmt.close();
+       
     }
 
 

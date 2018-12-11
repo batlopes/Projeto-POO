@@ -2,12 +2,16 @@ package Models;
 
 import java.sql.Timestamp;
 
-public class Cliente {
+import Database.ClienteDAO;
+import java.util.List;
+
+public class Cliente extends ClienteDAO{
 	
 	private String nome;
 	private Timestamp  criadoEm;
 	private int id;
 	private String contato;
+        private List<Servico> servico;
 	
 	public int getId() {
 		return id;

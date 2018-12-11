@@ -1,4 +1,4 @@
-package Banco;
+package Database;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -87,5 +87,19 @@ public class UsuarioDAO {
         stmt.close();
         
         return usuario;	
+    }
+    
+    public Usuario atualizar (){
+        return null;
+    }
+    
+    public void deletar(int id) throws SQLException{
+       PreparedStatement stmt = this.connection
+                .prepareStatement("delete from usuario WHERE id= ?");
+       
+       stmt.setInt(1,id);
+       stmt.execute();
+       stmt.close();
+       
     }
 }
