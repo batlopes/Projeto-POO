@@ -1,4 +1,4 @@
 package views;
 
-public class NewUser {
+public class NewUserController {
 }

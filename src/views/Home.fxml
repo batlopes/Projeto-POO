@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="views.Home"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<GridPane fx:id="gridPaneHome" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="200.0" minWidth="300.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.HomeController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="375.0" minHeight="10.0" prefHeight="370.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <MenuBar fx:id="menubar" maxHeight="25.0" prefHeight="25.0" GridPane.valignment="TOP">
+        <menus>
+          <Menu fx:id="clientMenu" mnemonicParsing="false" text="Cliente">
+            <items>
+              <MenuItem fx:id="newClientMI" mnemonicParsing="false" onAction="#addClient" text="Cadastrar novo" />
+                  <MenuItem fx:id="updateClientMI" mnemonicParsing="false" text="Atualizar existente" />
+            </items>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/client-small.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+          </Menu>
+          <Menu fx:id="serviceMenu" mnemonicParsing="false" text="Serviço">
+            <items>
+              <MenuItem fx:id="newServiceMI" mnemonicParsing="false" onAction="#addService" text="Cadastrar movo" />
+                  <MenuItem fx:id="updateServiceMI" mnemonicParsing="false" text="Atualizar existente" />
+            </items>
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/service-small.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+          </Menu>
+          <Menu fx:id="userMenu" mnemonicParsing="false" text="Usuario">
+            <items>
+              <MenuItem fx:id="newUserMI" mnemonicParsing="false" onAction="#addUser" text="Cadastrar novo" />
+                  <MenuItem fx:id="updateUserMI" mnemonicParsing="false" text="Atualizar existente" />
+            </items>
+               <graphic>
+                  <ImageView fitHeight="14.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/user-small.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</GridPane>
