@@ -3,6 +3,7 @@ package Models;
 import java.sql.Timestamp;
 
 import Database.ClienteDAO;
+import java.util.List;
 
 public class Cliente extends ClienteDAO{
 	
@@ -10,6 +11,7 @@ public class Cliente extends ClienteDAO{
 	private Timestamp  criadoEm;
 	private int id;
 	private String contato;
+        private List<Servico> servico;
 	
 	public int getId() {
 		return id;

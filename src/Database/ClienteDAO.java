@@ -69,5 +69,18 @@ public class ClienteDAO {
     public void adicionaServico(Servico servico){
         
     }
+    public Cliente atualizar (){
+        return null;
+    }
+    
+   public void deletar(int id) throws SQLException{
+       PreparedStatement stmt = this.connection
+                .prepareStatement("delete from cliente WHERE id= ?");
+       
+       stmt.setInt(1,id);
+       stmt.execute();
+       stmt.close();
+       
+    }
 
 }

@@ -71,8 +71,14 @@ public class ServicoDAO {
         return null;
     }
     
-    public void deletar(){
-        
+    public void deletar(int id) throws SQLException{
+       PreparedStatement stmt = this.connection
+                .prepareStatement("delete from servico WHERE id= ?");
+       
+       stmt.setInt(1,id);
+       stmt.execute();
+       stmt.close();
+       
     }
 
 
