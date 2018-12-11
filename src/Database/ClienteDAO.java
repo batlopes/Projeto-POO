@@ -1,6 +1,5 @@
 package Database;
 
-import Banco.Coneccao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -55,6 +54,7 @@ public class ClienteDAO {
         	cliente.setNome(rs.getString("nome"));
         	cliente.setContato(rs.getString("contato"));
                 cliente.setCriadoEm(rs.getTimestamp("criado_em"));
+                cliente.setServicos();
 
             // adicionando o objeto � lista
             clientes.add(cliente);
@@ -66,8 +66,54 @@ public class ClienteDAO {
         return clientes;
     }
     
-    public void adicionaServico(Servico servico){
+    public List<Servico> getServicos(int idcliente) throws SQLException{
+        PreparedStatement stmt = this.connection
+                .prepareStatement("select * from servico a inner join servico_has_cliente b on a.id = b.servico_id where b.Cliente_id = ?");
+        stmt.setInt(1,idcliente);
+        ResultSet rs = stmt.executeQuery();
+
+        List<Servico> servicos = new ArrayList<Servico>();
+
+        while (rs.next()) {
+
+            // criando o objeto usuario
+        	Servico servico = new Servico();
+        	servico.setId(rs.getInt("id"));
+        	servico.setDescricao(rs.getString("descricao"));
+        	servico.setTempo(rs.getFloat("tempo"));
+        	servico.setPreco(rs.getFloat("preco"));
+
+            // adicionando o objeto � lista
+            servicos.add(servico);
+        }
+
+        rs.close();
+        stmt.close();
+
+        return servicos;
         
+    }
+    
+    public void cadastrarServico(int idcliente, int idservico){
+        String sql = "insert into servico_has_cliente " +
+                "(servico_id, Cliente_id)" +
+                " values (?, ?)";
+
+        try {
+            // prepared statement para inser��o
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            // seta os valores
+
+            stmt.setInt(1,idservico);
+            stmt.setInt(1,idcliente);
+       
+            // executa
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     public Cliente atualizar (){
         return null;

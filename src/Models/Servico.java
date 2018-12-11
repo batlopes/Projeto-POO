@@ -7,7 +7,7 @@ import java.util.List;
 
 import Database.ServicoDAO;
 
-public class Servico extends ServicoDAO {
+public class Servico {
 	
 	private int id;
 	private String descricao;
@@ -48,6 +48,10 @@ public class Servico extends ServicoDAO {
 	public void setPreco(float preco) {
 		this.preco = preco;
 	}
+
+    public void setPreco(double d) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 
 }

@@ -3,9 +3,10 @@ package Models;
 import java.sql.Timestamp;
 
 import Database.ClienteDAO;
+import java.sql.SQLException;
 import java.util.List;
 
-public class Cliente extends ClienteDAO{
+public class Cliente{
 	
 	private String nome;
 	private Timestamp  criadoEm;
@@ -56,6 +57,20 @@ public class Cliente extends ClienteDAO{
 	public void setCriadoEm(Timestamp criadoEm) {
 		this.criadoEm = criadoEm;
 	}
+        
+        public List<Servico> getServicos() {
+		return servico;
+	}
+        
+        public void setServicos() throws SQLException {
+                ClienteDAO dao = new ClienteDAO();
+		this.servico = dao.getServicos(this.id);
+	}
+        
+        public void cadastrarServico(int idservico){
+            ClienteDAO dao = new ClienteDAO();
+            dao.cadastrarServico(this.id, idservico);
+        }
 
 
 }

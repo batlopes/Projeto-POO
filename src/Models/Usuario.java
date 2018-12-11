@@ -8,7 +8,7 @@ import java.util.List;
 
 import Database.UsuarioDAO;
 
-public class Usuario extends UsuarioDAO {
+public class Usuario{
 	
 	private String nome;
 	private String email;
@@ -53,35 +53,35 @@ public class Usuario extends UsuarioDAO {
 	}
 	
 	public static String hashPassword(String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-		MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
-        byte messageDigestSenha[] = algorithm.digest(senha.getBytes("UTF-8"));
-          
-        StringBuilder hexStringSenha = new StringBuilder();
-        for (byte b : messageDigestSenha) {
-                 hexStringSenha.append(String.format("%02X", 0xFF & b));
-        }
-        String senhahex = hexStringSenha.toString();
-        
-        return senhahex;
+            MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
+            byte messageDigestSenha[] = algorithm.digest(senha.getBytes("UTF-8"));
+
+            StringBuilder hexStringSenha = new StringBuilder();
+            for (byte b : messageDigestSenha) {
+                hexStringSenha.append(String.format("%02X", 0xFF & b));
+            }
+            String senhahex = hexStringSenha.toString();
+
+            return senhahex;
 	}
 	
 	public static boolean verifyPassword(String senha, String hash) throws NoSuchAlgorithmException, UnsupportedEncodingException{
-		MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
-        byte messageDigestSenha[] = algorithm.digest(senha.getBytes("UTF-8"));
+            MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
+            byte messageDigestSenha[] = algorithm.digest(senha.getBytes("UTF-8"));
           
-        StringBuilder hexStringSenha = new StringBuilder();
-        for (byte b : messageDigestSenha) {
+            StringBuilder hexStringSenha = new StringBuilder();
+            for (byte b : messageDigestSenha) {
                  hexStringSenha.append(String.format("%02X", 0xFF & b));
-        }
-        String senhahex = hexStringSenha.toString();
+            }
+            String senhahex = hexStringSenha.toString();
         
-        System.out.println(hash);   
-        return senhahex.equals(hash);
+            System.out.println(hash);   
+            return senhahex.equals(hash);
 	}
 	
 	public static Usuario login(String email, String senha) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException{
 		
-		UsuarioDAO dao = new UsuarioDAO();
+            UsuarioDAO dao = new UsuarioDAO();
 	    Usuario usuario = dao.getForEmail(email);
 	    
 	    if (usuario!=null){
