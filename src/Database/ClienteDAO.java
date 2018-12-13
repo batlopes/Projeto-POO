@@ -19,9 +19,9 @@ public class ClienteDAO {
     }
     
     public void adiciona(Cliente cliente) {
-        String sql = "insert into cliente " +
-                "(nome)" +
-                " values (?)";
+        String sql = "insert into Cliente " +
+                "(nome, contato)" +
+                " values (?,?)";
 
         try {
             // prepared statement para inser��o
@@ -30,6 +30,8 @@ public class ClienteDAO {
             // seta os valores
 
             stmt.setString(1,cliente.getNome());
+            stmt.setString(2,cliente.getContato());
+
        
             // executa
             stmt.execute();
@@ -41,7 +43,7 @@ public class ClienteDAO {
     
     public List<Cliente> getLista() throws SQLException{
     	PreparedStatement stmt = this.connection
-                .prepareStatement("select * from cliente");
+                .prepareStatement("select * from Cliente");
         ResultSet rs = stmt.executeQuery();
 
         List<Cliente> clientes = new ArrayList<Cliente>();
@@ -68,7 +70,7 @@ public class ClienteDAO {
     
     public List<Servico> getServicos(int idcliente) throws SQLException{
         PreparedStatement stmt = this.connection
-                .prepareStatement("select * from servico a inner join servico_has_cliente b on a.id = b.servico_id where b.Cliente_id = ?");
+                .prepareStatement("select * from servico a inner join servico_has_Cliente b on a.id = b.servico_id where b.Cliente_id = ?");
         stmt.setInt(1,idcliente);
         ResultSet rs = stmt.executeQuery();
 
@@ -95,7 +97,7 @@ public class ClienteDAO {
     }
     
     public void cadastrarServico(int idcliente, int idservico){
-        String sql = "insert into servico_has_cliente " +
+        String sql = "insert into servico_has_Cliente " +
                 "(servico_id, Cliente_id)" +
                 " values (?, ?)";
 

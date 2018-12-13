@@ -17,7 +17,7 @@ public class Home extends Application{
         scene.getStylesheets().add("styles/material-fx-v0_3.css");
         stage.setScene(scene);
         stage.setMinWidth(400);
-        stage.setMinHeight(250);
+        stage.setMinHeight(450);
         stage.show();
 
     }

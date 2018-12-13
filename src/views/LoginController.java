@@ -11,8 +11,10 @@ import javafx.stage.Stage;
 import Models.Usuario;
 
 import java.io.IOException;
+import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import views.HomeController;
 
 public class LoginController {
     @FXML
@@ -45,6 +47,8 @@ public class LoginController {
 
     }
     private void entry(Stage stage) throws IOException {
+//        URL url = getClass().getResource("Home.fxml");
+//        Parent home = FXMLLoader.load(url);
         Parent home = FXMLLoader.load(getClass().getResource("Home.fxml"));
         Scene scene = new Scene(home);
         scene.getStylesheets().add("styles/material-fx-v0_3.css");
@@ -53,5 +57,6 @@ public class LoginController {
         stage.setMinWidth(400);
         stage.setMinHeight(250);
         stage.show();
+
     }
 }
